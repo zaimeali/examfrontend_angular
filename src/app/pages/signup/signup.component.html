@@ -8,6 +8,8 @@
 
                 <h1 class="text-center">Register !!</h1>
 
+                {{ user | json }}
+
                 <form (ngSubmit)="formSubmit()">
                     <!-- Username field -->
                     <mat-form-field appearance="outline" class="full-width">
