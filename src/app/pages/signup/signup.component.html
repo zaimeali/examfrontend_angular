@@ -8,7 +8,7 @@
 
                 <h1 class="text-center">Register !!</h1>
 
-                {{ user | json }}
+                <!-- {{ user | json }} -->
 
                 <form (ngSubmit)="formSubmit()">
                     <!-- Username field -->
@@ -21,8 +21,10 @@
                             [(ngModel)]="user.username"
                             name="username"
                             type="text" 
+                            required
                             placeholder="Enter username here"
                         >
+                        <mat-hint>Username must be unique</mat-hint>
                     </mat-form-field>
 
                     <!-- Password field -->
@@ -35,6 +37,7 @@
                             [(ngModel)]="user.password"
                             name="password"
                             type="password" 
+                            required
                             placeholder="Enter password here"
                         >
                     </mat-form-field>
@@ -49,6 +52,7 @@
                             [(ngModel)]="user.firstName"
                             name="firstName"
                             type="text" 
+                            required
                             placeholder="Enter first name here"
                         >
                     </mat-form-field>
@@ -63,6 +67,7 @@
                             [(ngModel)]="user.lastName"
                             name="lastName"
                             type="text" 
+                            required
                             placeholder="Enter last name here"
                         >
                     </mat-form-field>
@@ -77,6 +82,7 @@
                             [(ngModel)]="user.email"
                             name="email"
                             type="email" 
+                            required
                             placeholder="Enter email here"
                         >
                     </mat-form-field>
@@ -91,6 +97,7 @@
                             [(ngModel)]="user.phone"
                             name="phone"
                             type="tel" 
+                            required
                             placeholder="Enter phone number here"
                         >
                     </mat-form-field>

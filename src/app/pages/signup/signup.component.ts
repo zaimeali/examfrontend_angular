@@ -1,4 +1,13 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
+
+// Material UI
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+// Sweet Alert
+import Swal from 'sweetalert2';
+
+// Services
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,7 +17,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private snack: MatSnackBar) { }
 
   public user = {
     username: '',
@@ -23,21 +32,25 @@ export class SignupComponent implements OnInit {
   }
 
   formSubmit = () => {
-    console.log(this.user)
 
     if(this.user.username == '' || this.user.username == null) {
-      alert('Username is required')
+      this.snack.open("Username is required", "Ok", {
+        duration: 3000,
+      })
       return
     }
 
     this.userService.addUser(this.user).subscribe(
       (data) => {
         console.log(data)
-        alert("Success")
+        Swal.fire("Success", "User is registered", "success")
       }, 
       (error) => {
-        console.error(error)
-        alert('Something went wrong')
+        console.error(error.error)
+        const errorMessage: String = error.error.message
+        this.snack.open(`Something went wrong - ${errorMessage}`, "Ok", {
+          duration: 3000,
+        })
       }
     )
   }
