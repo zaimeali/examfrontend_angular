@@ -43,7 +43,21 @@ export class LoginComponent implements OnInit {
     this.loginService.generateToken(this.user).subscribe(
       (data: any) => {
         console.log(data)
-        
+
+        // Save token
+        this.loginService.saveToken(data.token);
+
+        this.loginService.getCurrentUser().subscribe(
+          (data: any) => {
+            this.loginService.setUser(data)
+            console.log(data);
+            
+          },
+          (error) => {
+            console.error("Error in getting user")
+            console.error(error)
+          }
+        )
       }, 
       (error) => {
         console.error("Error")

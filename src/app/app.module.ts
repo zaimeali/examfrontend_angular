@@ -24,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { authInterceptorProviders } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { HomeComponent } from './pages/home/home.component';
     MatToolbarModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
