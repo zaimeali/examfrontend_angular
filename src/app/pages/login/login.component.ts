@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
     // Generate Token
     this.loginService.generateToken(this.user).subscribe(
       (data: any) => {
-        console.log(data)
 
         // Save token
         this.loginService.saveToken(data.token);
@@ -50,7 +49,6 @@ export class LoginComponent implements OnInit {
         this.loginService.getCurrentUser().subscribe(
           (data: any) => {
             this.loginService.setUser(data)
-            console.log(data);
             
           },
           (error) => {

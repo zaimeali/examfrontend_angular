@@ -3,8 +3,6 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { LoginService } from "./login.service";
 
-const TOKEN_HEADER = 'Authorization';
-
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -21,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if(token != null) {
             authRequest = authRequest.clone({
                 setHeaders: {
-                    TOKEN_HEADER: `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 }
             })
         }
