@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private matSnackBar: MatSnackBar, private loginService: LoginService) { }
+  constructor(private matSnackBar: MatSnackBar, private loginService: LoginService, private router: Router) { }
 
   public user = {
     username: '',
@@ -50,6 +51,21 @@ export class LoginComponent implements OnInit {
           (data: any) => {
             this.loginService.setUser(data)
             
+            if(this.loginService.getUserRole() == 'ADMIN') {
+              // window.location.href = "/admin"
+              this.router.navigate(['admin'])
+              this.loginService.loginStatusSubject.next(true)
+            } 
+            else if(this.loginService.getUserRole() == 'USER') {
+              // window.location.href = "/user"
+              this.router.navigate(['user'])
+              this.loginService.loginStatusSubject.next(true)
+            }
+            else {
+              this.loginService.logout();
+              // location.reload()
+            }
+
           },
           (error) => {
             console.error("Error in getting user")
@@ -60,6 +76,9 @@ export class LoginComponent implements OnInit {
       (error) => {
         console.error("Error")
         console.error(error)
+        this.matSnackBar.open("Invalid Details!! try again", '', {
+          duration: 3000
+        })
       }
     )
   }

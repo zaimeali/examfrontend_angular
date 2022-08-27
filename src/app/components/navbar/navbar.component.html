@@ -11,6 +11,7 @@
     <span class="example-spacer"></span>
 
     <a 
+        *ngIf="!isLoggedIn"
         [routerLink]="'/login'"
         mat-raised-button 
         class="example-icon" 
@@ -21,12 +22,34 @@
     </a>
 
     <a 
+        *ngIf="!isLoggedIn"
         routerLink="/signup"
         mat-raised-button 
         class="example-icon ml-20 mr-20" 
-        aria-label="Example icon-button with share icon" 
+        aria-label="Example icon-button with register icon" 
         color="accent"
     >
         Register
+    </a>
+
+    <a
+        *ngIf="isLoggedIn && user"
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with user icon" 
+        color="accent"
+    >
+        {{ user['username'] }}
+    </a>
+
+    <a
+        (click)="logout()"
+        *ngIf="isLoggedIn"
+        mat-raised-button
+        class="example-icon ml-20 mr-20"
+        aria-label="Example icon-button with register icon" 
+        color="accent"
+    >
+        Logout
     </a>
 </mat-toolbar>
