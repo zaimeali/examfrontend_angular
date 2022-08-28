@@ -9,6 +9,7 @@ import { DashboardComponent as UserDashboardComponent } from './pages/user/dashb
 import { DashboardComponent as AdminDashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { AdminGuard } from './services/admin.guard';
 import { UserGuard } from './services/user.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,12 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminDashboardComponent,
-    pathMatch: 'full',
+    children: [
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      }
+    ],
     canActivate: [AdminGuard]
   },
   {
