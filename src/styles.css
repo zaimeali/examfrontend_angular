@@ -36,3 +36,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width {
     width: 100%;
 }
+
+.profile-image {
+    max-width: 150px;
+    max-height: 150px;
+
+    border: 2px solid black;
+}
+
+.table {
+    width: 100%;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.table tr td {
+    padding: 10px 5px;
+    border-bottom: 0.1px solid #e2e2e2;
+    text-align: center;
+} 
