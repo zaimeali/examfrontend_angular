@@ -27,7 +27,10 @@
         <button mat-flat-button color="accent">Questions</button>
         <button class="ml-20" mat-stroked-button color="accent">Max Marks: {{ quiz.maxMarks }}</button>
         <button class="ml-20" mat-stroked-button color="accent">Displaying Questions: {{ quiz.numberOfQuestions }}</button>
-        <button class="ml-20" mat-flat-button color="accent">Update</button>
+        <button class="ml-20" 
+            mat-flat-button color="accent"
+            [routerLink]="'/admin/quizzes/update/' + quiz.quizID"
+        >Update</button>
         <button class="ml-20" mat-flat-button color="accent">Attempts</button>
         <button class="ml-20" 
             mat-flat-button color="warn" 

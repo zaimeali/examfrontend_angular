@@ -20,4 +20,8 @@ export class QuizService {
   public deleteQuiz = (quizID : Number) => {
     return this.http.delete(`${baseURL}/api/quiz/${quizID}`);
   }
+
+  public getQuizbyID = (quizID : Number) => {
+    return this.http.get(`${baseURL}/api/quiz/${quizID}`);
+  }
 }
