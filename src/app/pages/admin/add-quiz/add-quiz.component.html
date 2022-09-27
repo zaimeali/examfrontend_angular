@@ -1,0 +1,111 @@
+<mat-card>
+    <h1>Add New Quiz</h1>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content class="mt-40">
+        <form (ngSubmit)="formSubmit()">
+            <div class="bootstrap-wrapper">
+                
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>
+                                    Title
+                                </mat-label>
+
+                                <input 
+                                    type="text"
+                                    name="title"
+                                    placeholder="Enter title"
+                                    matInput
+                                >
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>
+                                    Description
+                                </mat-label>
+
+                                <textarea 
+                                    name="description"
+                                    placeholder="Enter Description"
+                                    matInput
+                                    rows="10"
+                                ></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-2">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>
+                                    Max Marks
+                                </mat-label>
+
+                                <input 
+                                    type="text"
+                                    name="maxMarks"
+                                    placeholder="Enter Max Marks..."
+                                    matInput
+                                >
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4">
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>
+                                    Number of Questions
+                                </mat-label>
+
+                                <input 
+                                    type="text"
+                                    name="numberOfQuestions"
+                                    placeholder="Enter Number of Questions..."
+                                    matInput
+                                >
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row mt-10 mb-10">
+                        <div class="col-md-8 offset-md-2">
+                            <mat-slide-toggle
+                                color="accent"
+                                [checked]="false"
+                            >
+                                Active Quiz
+                            </mat-slide-toggle>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <mat-form-field class="full-width">
+                                <mat-label>Select Category</mat-label>
+                                <mat-select name="category">
+                                    <mat-option *ngFor="let category of categories" [value]="category.categoryID">
+                                        {{ category.title }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container text-center">
+                    <button class="mt-10 mb-10" mat-raised-button color="accent">Add Quiz</button>
+                </div>
+
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
