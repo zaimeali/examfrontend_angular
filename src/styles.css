@@ -7,6 +7,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     text-align: center;
 }
 
+.mt-40 {
+    margin-top: 40px !important;
+}
+.ml-40 {
+    margin-left: 40px !important;
+}
+.mr-40 {
+    margin-right: 40px !important;
+}
+.mb-40 {
+    margin-bottom: 40px !important;
+}
+
 .mt-20 {
     margin-top: 20px !important;
 }
@@ -31,6 +44,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .mb-10 {
     margin-bottom: 10px !important;
+}
+
+.mt-15 {
+    margin-top: 15px  !important;
+}
+.ml-15 {
+    margin-left: 15px !important;
+}
+.mr-15 {
+    margin-right: 15px !important;
+}
+.mb-15 {
+    margin-bottom: 15px !important;
 }
 
 .full-width {

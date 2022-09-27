@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// Guards
+import { AdminGuard } from './services/admin.guard';
+import { UserGuard } from './services/user.guard';
+
 // Pages
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { DashboardComponent as UserDashboardComponent } from './pages/user/dashboard/dashboard.component';
 import { DashboardComponent as AdminDashboardComponent } from './pages/admin/dashboard/dashboard.component';
-import { AdminGuard } from './services/admin.guard';
-import { UserGuard } from './services/user.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 
 const routes: Routes = [
   {
@@ -39,9 +43,17 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
-      }
+      },
+      {
+        path: 'categories',
+        component: ViewCategoriesComponent,
+      },
+      {
+        path: 'categories/add',
+        component: AddCategoryComponent,
+      },
     ],
-    canActivate: [AdminGuard]
+    // canActivate: [AdminGuard]
   },
   {
     path: 'user',
