@@ -21,6 +21,8 @@
                                     name="title"
                                     placeholder="Enter title"
                                     matInput
+                                    [(ngModel)]="quiz.title"
+                                    required
                                 >
                             </mat-form-field>
                         </div>
@@ -38,6 +40,7 @@
                                     placeholder="Enter Description"
                                     matInput
                                     rows="10"
+                                    [(ngModel)]="quiz.description"
                                 ></textarea>
                             </mat-form-field>
                         </div>
@@ -55,6 +58,8 @@
                                     name="maxMarks"
                                     placeholder="Enter Max Marks..."
                                     matInput
+                                    [(ngModel)]="quiz.maxMarks"
+                                    required
                                 >
                             </mat-form-field>
                         </div>
@@ -70,6 +75,8 @@
                                     name="numberOfQuestions"
                                     placeholder="Enter Number of Questions..."
                                     matInput
+                                    [(ngModel)]="quiz.numberOfQuestions"
+                                    required
                                 >
                             </mat-form-field>
                         </div>
@@ -79,7 +86,8 @@
                         <div class="col-md-8 offset-md-2">
                             <mat-slide-toggle
                                 color="accent"
-                                [checked]="false"
+                                [(ngModel)]="quiz.active"
+                                name="active"
                             >
                                 Active Quiz
                             </mat-slide-toggle>
@@ -90,7 +98,7 @@
                         <div class="col-md-8 offset-md-2">
                             <mat-form-field class="full-width">
                                 <mat-label>Select Category</mat-label>
-                                <mat-select name="category">
+                                <mat-select name="category" [(ngModel)]="quiz.category.categoryID">
                                     <mat-option *ngFor="let category of categories" [value]="category.categoryID">
                                         {{ category.title }}
                                     </mat-option>

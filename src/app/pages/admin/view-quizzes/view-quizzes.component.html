@@ -29,6 +29,10 @@
         <button class="ml-20" mat-stroked-button color="accent">Displaying Questions: {{ quiz.numberOfQuestions }}</button>
         <button class="ml-20" mat-flat-button color="accent">Update</button>
         <button class="ml-20" mat-flat-button color="accent">Attempts</button>
+        <button class="ml-20" 
+            mat-flat-button color="warn" 
+            (click)="deleteQuiz(quiz.quizID)"
+        >Delete <mat-icon mat-list-icon>delete</mat-icon></button>
     </mat-card-actions>
 </mat-card>
 

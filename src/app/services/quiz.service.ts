@@ -16,4 +16,8 @@ export class QuizService {
   public createQuiz = (quiz : any) => {
     return this.http.post(`${baseURL}/api/quiz/`, quiz);
   }
+
+  public deleteQuiz = (quizID : Number) => {
+    return this.http.delete(`${baseURL}/api/quiz/${quizID}`);
+  }
 }

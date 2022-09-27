@@ -11,25 +11,14 @@ export class ViewQuizzesComponent implements OnInit {
 
   quizzes = [
     {
-      qId: 23,
-      title: 'test',
-      description: 'testing',
-      maxMarks: '50',
-      numberOfQuestions: '20',
+      quizID: null,
+      title: '',
+      description: '',
+      maxMarks: '',
+      numberOfQuestions: '',
       active: '',
       category: {
-        title: 'Tester',
-      },
-    },
-    {
-      qId: 23,
-      title: 'test',
-      description: 'testing',
-      maxMarks: '50',
-      numberOfQuestions: '20',
-      active: '',
-      category: {
-        title: 'Tester',
+        title: '',
       },
     },
   ];
@@ -40,7 +29,6 @@ export class ViewQuizzesComponent implements OnInit {
     this.quizService.getAllQuizzes()
       .subscribe(
         (data : any) => {
-          console.log(data);
           this.quizzes = data;
         },
         (error) => {
@@ -50,4 +38,28 @@ export class ViewQuizzesComponent implements OnInit {
       );
   }
 
+  deleteQuiz = (quizID : any) => {
+    Swal.fire({
+      icon: 'info',
+      title: 'Are you sure?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true,
+    }).then(
+      (result) => {
+        if(result.isConfirmed) {
+          this.quizService.deleteQuiz(quizID)
+            .subscribe(
+              (data : any) => {
+                Swal.fire("Success", "Deleted Successfully", "success");
+                this.quizzes = this.quizzes.filter((quiz) => quiz.quizID != quizID);
+              },
+              (error) => {
+                console.error(error);
+                Swal.fire("Error", "Error in deleting quiz", "error");
+              },
+            );
+        }
+      }
+    );
+  }
 }
