@@ -29,4 +29,8 @@ export class QuestionService {
   public getQuizTitle = () => {
     return this.currentQuizTitle;
   }
+
+  public deleteQuestionByID = (questionID : any) => {
+    return this._http.delete(`${baseURL}/api/question/${questionID}`);
+  }
 }

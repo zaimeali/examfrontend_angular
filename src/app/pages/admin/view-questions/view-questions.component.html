@@ -49,6 +49,16 @@
                     </div>
 
                 </mat-card-content>
+
+                <mat-card-actions>
+                    <button 
+                        mat-button 
+                        color="warn"
+                        (click)="deleteQuestion(question['questionID'])"
+                    >Delete</button>
+                    <button mat-button color="primary">Update</button>
+                </mat-card-actions>
+
             </mat-card>
         </div>
     </div>

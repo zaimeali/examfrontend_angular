@@ -84,7 +84,7 @@ const routes: Routes = [
     path: 'user',
     component: UserDashboardComponent,
     pathMatch: 'full',
-    canActivate: [UserGuard]
+    // canActivate: [UserGuard]
   }
 ];
 

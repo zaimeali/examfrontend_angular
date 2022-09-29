@@ -31,7 +31,7 @@ import { authInterceptorProviders } from './services/auth.interceptor';
 import { DashboardComponent as UserDashboardComponent } from './pages/user/dashboard/dashboard.component';
 import { DashboardComponent as AdminDashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { SidebarComponent as AdminSidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
@@ -40,6 +40,7 @@ import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { UsersidebarComponent } from './pages/user/usersidebar/usersidebar.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     UserDashboardComponent,
     AdminDashboardComponent,
     ProfileComponent,
-    SidebarComponent,
+    AdminSidebarComponent,
     WelcomeComponent,
     ViewCategoriesComponent,
     AddCategoryComponent,
@@ -60,7 +61,8 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     AddQuizComponent,
     UpdateQuizComponent,
     ViewQuestionsComponent,
-    AddQuestionComponent
+    AddQuestionComponent,
+    UsersidebarComponent,
   ],
   imports: [
     BrowserModule,
