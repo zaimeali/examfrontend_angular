@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from 'src/app/services/category.service';
 import Swal from 'sweetalert2';
 
@@ -11,13 +12,16 @@ export class ViewCategoriesComponent implements OnInit {
 
   categories = [
     {
-      cid: null,
+      categoryID: null,
       title: '',
       description: ''
     },
   ];
 
-  constructor(private categoryService : CategoryService) { }
+  constructor(
+    private categoryService : CategoryService,
+    private matSnack : MatSnackBar,
+    ) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories()
@@ -31,4 +35,28 @@ export class ViewCategoriesComponent implements OnInit {
       })
   }
 
+  deleteCategory = (categoryID : any) => {
+    Swal.fire({
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonText: "delete",
+      title: 'Are you sure?'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        this.categoryService.deleteCategory(categoryID)
+        .subscribe(
+          (data : any) => {
+            this.matSnack.open("Deleted Successfully", "", {
+              duration: 3000,
+            });
+            this.categories = this.categories.filter((category) => category.categoryID != categoryID);
+          },
+          (error) => {
+            console.error(error);
+            Swal.fire("Error !!", `${error.statusText}`, "error");
+          }
+        );
+      }
+    });
+  }
 }

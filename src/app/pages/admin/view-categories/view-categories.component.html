@@ -19,7 +19,7 @@
                 {{ category.description }}
             </div>
             <div>
-                <button mat-raised-button>
+                <button mat-raised-button (click)="deleteCategory(category.categoryID)">
                     Delete <mat-icon>delete</mat-icon>
                 </button>
             </div>

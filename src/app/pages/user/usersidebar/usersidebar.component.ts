@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/services/category.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usersidebar',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersidebarComponent implements OnInit {
 
-  constructor() { }
+  categories = [];
+
+  constructor(
+    private _categoryService : CategoryService
+  ) { }
 
   ngOnInit(): void {
+    this._categoryService.getAllCategories()
+      .subscribe(
+        (data : any) => {
+          this.categories = data;
+        },
+        (error) => {
+          console.error(error);
+          Swal.fire("Error !!", `${error.statusText}`, "error");
+        }
+      );
   }
 
 }
