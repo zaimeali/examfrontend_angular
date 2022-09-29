@@ -2,9 +2,13 @@
     <mat-list>
         <h1>All Categories</h1>
 
+        <div class="container text-center mt-20 mb-20">
+            <button mat-raised-button color="accent" routerLink="/admin/categories/add">Add new Category</button>
+        </div>
+
         <mat-divider></mat-divider>
 
-        <div class="mt-15"></div>
+        <div class="mt-20"></div>
 
         <mat-list-item *ngFor = "let category of categories">
             <mat-icon mat-list-icon>category</mat-icon>
@@ -22,9 +26,5 @@
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
-
-    <div class="container text-center mt-20">
-        <button mat-raised-button color="accent" routerLink="/admin/categories/add">Add new Category</button>
-    </div>
 
 </mat-card>

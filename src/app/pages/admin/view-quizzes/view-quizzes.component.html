@@ -6,6 +6,11 @@
     </mat-card-header>
 </mat-card>
 
+<div class="container text-center mt-20">
+    <button mat-raised-button color="accent" routerLink="/admin/quizzes/add">Add New Quiz</button>
+    <mat-divider class="mt-10 mb-20"></mat-divider>
+</div>
+
 <mat-card class="mt-10 ml-20 mr-20" *ngFor="let quiz of quizzes">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -24,7 +29,12 @@
     </mat-card-content>
 
     <mat-card-actions>
-        <button mat-flat-button color="accent">Questions</button>
+        <button 
+            mat-flat-button 
+            color="accent"
+            [routerLink]="'/admin/questions/'+quiz.quizID+'/'+quiz.title"
+        >Questions</button>
+
         <button class="ml-20" mat-stroked-button color="accent">Max Marks: {{ quiz.maxMarks }}</button>
         <button class="ml-20" mat-stroked-button color="accent">Displaying Questions: {{ quiz.numberOfQuestions }}</button>
         <button class="ml-20" 
@@ -39,6 +49,3 @@
     </mat-card-actions>
 </mat-card>
 
-<div class="container text-center mt-20">
-    <button mat-raised-button color="accent" routerLink="/admin/quizzes/add">Add New Quiz</button>
-</div>

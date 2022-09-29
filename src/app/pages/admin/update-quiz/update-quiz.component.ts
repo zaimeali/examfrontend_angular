@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
@@ -17,6 +17,7 @@ export class UpdateQuizComponent implements OnInit {
     private matSnack : MatSnackBar,
     private route : ActivatedRoute,
     private categoryService : CategoryService,
+    private router : Router,
   ) { }
 
   quizID = 0;
@@ -48,7 +49,7 @@ export class UpdateQuizComponent implements OnInit {
         },
         (error) => {
           console.error(error);
-          Swal.fire("Error !!", `${error.statusText}`, "error");
+          Swal.fire("Error !!", "Error in fetching categories", "error");
         }
       );
 
@@ -67,6 +68,24 @@ export class UpdateQuizComponent implements OnInit {
   }
 
   formSubmit() {
+    if(this.quiz.title.trim() == '' || this.quiz.title == null) {
+      this.matSnack.open("Title is required", "", {
+        duration: 3000,
+      });
 
+      return;
+    }
+
+    this.quizService.updateQuiz(this.quiz)
+      .subscribe(
+        (data : any) => {
+          Swal.fire("Success", "Updated Successfully", "success");
+          this.router.navigate(['admin/quizzes']);
+        },
+        (error) => {
+          console.error(error);
+          Swal.fire("Error !!", error.statusText, "error");
+        }
+      );
   }
 }

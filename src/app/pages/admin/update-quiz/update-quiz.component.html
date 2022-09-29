@@ -4,7 +4,7 @@
     <mat-divider></mat-divider>
 
     <mat-card-content class="mt-40">
-        <form (ngSubmit)="formSubmit()">
+        <form (ngSubmit)="formSubmit()" *ngIf="quiz">
             <div class="bootstrap-wrapper">
                 
                 <div class="container">
@@ -117,5 +117,3 @@
         </form>
     </mat-card-content>
 </mat-card>
-
-{{ quiz | json }}
