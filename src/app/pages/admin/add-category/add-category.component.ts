@@ -41,6 +41,7 @@ export class AddCategoryComponent implements OnInit {
             title: '',
             description: '',
           };
+          this.router.navigate(['/admin/categories']);
         },
         (error) => {
           Swal.fire("Error !!", `${error.statusText}`, "error");

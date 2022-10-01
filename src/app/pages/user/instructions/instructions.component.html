@@ -1,0 +1,63 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt-20">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Read this instruction carefully
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            One more step to go
+                        </mat-card-subtitle>
+                    </mat-card-header>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-card-content class="ml-15">
+                        <h2 class="mt-10">
+                            {{ quiz['title'] }}
+                        </h2>
+
+                        <p>
+                            {{ quiz['description'] }}
+                        </p>
+
+                        
+                        <mat-divider></mat-divider>
+
+                        <h2 class="mt-10">Important instructions</h2>
+
+                        <mat-list>
+                            <mat-list-item>
+                                - Practice quiz
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                - Quiz Time: <b class="ml-5">{{ quiz['numberOfQuestions'] * 2 }} minutes</b>
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                - Number of Questions <b class="ml-5">{{ quiz['numberOfQuestions'] }}</b>
+                            </mat-list-item>
+
+                            <mat-list-item>
+                                - Each Question Marks <b class="ml-5">{{ quiz['maxMarks'] / quiz['numberOfQuestions'] }}</b>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-card-actions class="text-center mb-10">
+                        <button
+                            class="mt-10"
+                            mat-raised-button
+                            color="accent"
+                        >Start Quiz</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

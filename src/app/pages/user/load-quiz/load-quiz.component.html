@@ -26,7 +26,11 @@
                     <mat-card-actions>
                         <div class="container-fluid text-center">
                             <button mat-raised-button color="primary">View</button>
-                            <button mat-raised-button color="accent">Start</button>
+                            <button 
+                                mat-raised-button 
+                                color="accent"
+                                [routerLink]="'/user/quiz/instruction/'+quiz['quizID']"
+                            >Start</button>
                         </div>
                         <div class="container-fluid text-center">
                             <button mat-button>Questions: {{ quiz['numberOfQuestions'] }}</button>
