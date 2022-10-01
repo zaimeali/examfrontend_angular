@@ -1,8 +1,10 @@
 <div class="bootstrap-wrapper">
     <div class="container-fluid">
-        <h3 class="mt-15">Available Quizzes</h3>
+        <h2 class="mt-15">Available Quizzes</h2>
 
-        <div class="row mt-10" *ngIf="quizzes">
+        <mat-divider></mat-divider>
+
+        <div class="row mt-10" *ngIf="quizzes?.length; else elseCondition">
             <div class="col-md-4" *ngFor="let quiz of quizzes">
                 <mat-card class="mb-15">
                     <mat-card-header>
@@ -34,5 +36,21 @@
                 </mat-card>
             </div>
         </div>
+
+        <ng-template #elseCondition>
+            <div class="row mt-10">
+                <div class="col-md-12">
+                    <div class="container text-center">
+                        <mat-card>
+                            <mat-card-header>
+                                <mat-card-subtitle>
+                                    No Quizzes Found in this category
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

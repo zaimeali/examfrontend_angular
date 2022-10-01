@@ -20,22 +20,45 @@ export class LoadQuizComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.categoryID = Number.parseInt(this._route.snapshot.params["categoryID"]);
-    
-    if(this.categoryID == 0) {
-      this._quizService.getAllQuizzes()
-        .subscribe(
-          (data : any) => {
-            this.quizzes = data;
-          },
-          (error) => {
-            console.error(error);
-            Swal.fire("Error !!", `${error.statusText}`, "error");
-          }
-        );
-    } else {
 
-    }
+    this._route.params
+      .subscribe(
+        (params) => {
+
+          if(params['categoryID'] == undefined) {
+            this.categoryID = 0;
+          } else {
+            this.categoryID = Number.parseInt(params["categoryID"]);
+          }
+
+
+          if(this.categoryID == 0) {
+            this._quizService.getActiveQuizzes()
+              .subscribe(
+                (data : any) => {
+                  this.quizzes = data;
+                },
+                (error) => {
+                  console.error(error);
+                  Swal.fire("Error !!", `${error.statusText}`, "error");
+                }
+              );
+          } else {
+            this._quizService.getQuizzesOfCategory(this.categoryID)
+              .subscribe(
+                (data : any) => {
+                  this.quizzes = data;
+                },
+                (error) => {
+                  console.error(error);
+                  Swal.fire("Error !!", `${error.statusText}`, "error");
+                }
+              );
+          }
+        }
+      );
+    
+    
   }
 
 }

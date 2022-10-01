@@ -87,6 +87,14 @@ const routes: Routes = [
     // pathMatch: 'full',
     children: [
       {
+        path: '',
+        component: LoadQuizComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
         path: ':categoryID',
         component: LoadQuizComponent,
       },

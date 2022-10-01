@@ -28,4 +28,12 @@ export class QuizService {
   public updateQuiz = (quiz : any) => {
     return this.http.put(`${baseURL}/api/quiz/`, quiz);
   }
+
+  public getQuizzesOfCategory = (categoryID : Number) => {
+    return this.http.get(`${baseURL}/api/quiz/category/${categoryID}/active`);
+  }
+
+  public getActiveQuizzes = () => {
+    return this.http.get(`${baseURL}/api/quiz/active`);
+  }
 }
