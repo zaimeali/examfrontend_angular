@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
             } 
             else if(this.loginService.getUserRole() == 'USER') {
               // window.location.href = "/user"
-              this.router.navigate(['user'])
+              this.router.navigate(['user/0'])
               this.loginService.loginStatusSubject.next(true)
             }
             else {

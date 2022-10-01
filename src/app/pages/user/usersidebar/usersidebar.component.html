@@ -4,7 +4,7 @@
             Menu
         </div>
 
-        <button mat-list-item routerLink="/user">
+        <button mat-list-item routerLink="/user/0">
             <mat-icon mat-list-icon>home</mat-icon> Home
         </button>
         
@@ -14,7 +14,7 @@
 
         <mat-divider></mat-divider>
         
-        <button mat-list-item routerLink="/user/profile">
+        <button mat-list-item routerLink="/user/0">
             <mat-icon mat-list-icon>quiz</mat-icon> All Quizzes
         </button>
 
@@ -22,7 +22,7 @@
         
         <h4 class="mt-10 mb-5">Categories:</h4>
 
-        <button *ngFor="let category of categories" mat-list-item routerLink="/user/categories">
+        <button *ngFor="let category of categories" mat-list-item [routerLink]="'/user/'+category['categoryID']">
             <mat-icon mat-list-icon>quiz</mat-icon> {{ category['title'] }}
         </button>
     </mat-action-list>
