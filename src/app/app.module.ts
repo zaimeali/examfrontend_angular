@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -86,6 +87,7 @@ import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component
     MatListModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -72,6 +72,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-bottom: 5px !important;
 }
 
+.ma-auto {
+    margin: auto;
+}
+
 .full-width {
     width: 100%;
 }

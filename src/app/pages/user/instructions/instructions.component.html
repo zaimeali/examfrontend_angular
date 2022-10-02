@@ -42,7 +42,7 @@
                             </mat-list-item>
 
                             <mat-list-item>
-                                - Each Question Marks <b class="ml-5">{{ quiz['maxMarks'] / quiz['numberOfQuestions'] }}</b>
+                                - Each Question Marks <b class="ml-5">{{ quiz['maxMarks'] / quiz['numberOfQuestions'] | number : '1.0-2' }}</b>
                             </mat-list-item>
                         </mat-list>
                     </mat-card-content>
