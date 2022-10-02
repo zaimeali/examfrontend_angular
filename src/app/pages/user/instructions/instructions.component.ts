@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,8 @@ export class InstructionsComponent implements OnInit {
 
   constructor(
     private _quizService : QuizService,
-    private _route : ActivatedRoute
+    private _route : ActivatedRoute,
+    private _router : Router,
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +42,19 @@ export class InstructionsComponent implements OnInit {
           Swal.fire('Error !!', "Didn't get any quiz id", "error");
         }
       );
+  }
+
+  startQuiz = () => {
+    Swal.fire({
+      'icon': 'question',
+      'title': "Do you want to start?",
+      'showCancelButton': true,
+      'confirmButtonText': 'Start'
+    }).then((response) => {
+      if(response.isConfirmed) {
+        this._router.navigate([`/user/quiz/${this.quizID}`]);
+      }
+    });
   }
 
 }

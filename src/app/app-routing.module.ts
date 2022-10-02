@@ -22,6 +22,7 @@ import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questi
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
 
 const routes: Routes = [
   {
@@ -102,6 +103,10 @@ const routes: Routes = [
       {
         path: 'quiz/instruction/:quizID',
         component: InstructionsComponent,
+      },
+      {
+        path: 'quiz/:quizID',
+        component: StartQuizComponent,
       },
     ],
     // canActivate: [UserGuard]

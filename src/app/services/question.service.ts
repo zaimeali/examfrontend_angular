@@ -18,6 +18,10 @@ export class QuestionService {
     return this._http.get(`${baseURL}/api/question/quiz/admin/${quizID}`);
   }
 
+  public getQuestionsOfQuizForUser = (quizID : Number) => {
+    return this._http.get(`${baseURL}/api/question/quiz/${quizID}`);
+  }
+
   public addQuestion = (question : any) => {
     return this._http.post(`${baseURL}/api/question/`, question);
   }

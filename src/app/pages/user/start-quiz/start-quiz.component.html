@@ -1,0 +1,141 @@
+<div class="bootstrap-wrapper" *ngIf="!(isSubmit)">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+                <ng-container *ngIf="questions">
+                    <h1>
+                        Quiz: <b class="mt-15 ml-5">{{ questions[0]['quiz']['title'] }}</b>
+                    </h1>
+                    <mat-divider></mat-divider>
+                </ng-container> 
+
+                <mat-card *ngFor="let question of questions; let i = index" class="mt-20">
+                    <mat-card-content>
+                        <p>
+                            <b>
+                                Q{{ i + 1 }})
+                            </b>
+                            <span class="ml-5" [innerHTML]="question['content']"></span>
+                        </p>
+
+                        <mat-divider></mat-divider>
+
+                        <div class="container mt-15">
+                            <div class="row">
+                                <div class="col-md-6" *ngIf="question['option1']">
+                                    <input 
+                                        type="radio" 
+                                        [id]="question['option1']+i" 
+                                        [name]="question['title']+i" 
+                                        [value]="question['option1']"
+                                        [(ngModel)]="question['givenAnswer']"
+                                    >
+                                    <label [for]="question['option1']+i">{{ question['option1'] }}</label>
+                                </div>
+                                <div class="col-md-6" *ngIf="question['option2']">
+                                    <input 
+                                        type="radio" 
+                                        [id]="question['option2']+i" 
+                                        [name]="question['title']+i" 
+                                        [value]="question['option2']"
+                                        [(ngModel)]="question['givenAnswer']"
+                                    >
+                                    <label [for]="question['option2']+i">{{ question['option2'] }}</label>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-md-6" *ngIf="question['option3']">
+                                    <input 
+                                        type="radio" 
+                                        [id]="question['option3']+i" 
+                                        [name]="question['title']+i" 
+                                        [value]="question['option3']"
+                                        [(ngModel)]="question['givenAnswer']"
+                                    >
+                                    <label [for]="question['option3']+i">{{ question['option3'] }}</label>
+                                </div>
+                                <div class="col-md-6" *ngIf="question['option4']">
+                                    <input 
+                                        type="radio" 
+                                        [id]="question['option4']+i" 
+                                        [name]="question['title']+i" 
+                                        [value]="question['option4']"
+                                        [(ngModel)]="question['givenAnswer']"
+                                    >
+                                    <label [for]="question['option4']+i">{{ question['option4'] }}</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+
+
+                <div class="container text-center mt-20 mb-20">
+                    <mat-divider></mat-divider>
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        class="mt-20 mb-20"
+                        (click)="submitQuiz()"
+                    >
+                        Submit Quiz
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+    <div class="container">
+        <div class="row mt-20">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Quiz Result:
+                        </mat-card-title>
+                    </mat-card-header>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-card-content>
+                        <h3>Total Questions: <b>{{ totalQuestions }}</b></h3>
+                        <h3>Total Marks: <b>{{ maxMarks }}</b></h3>
+                        <h3>Marks Scored: <b>{{ marksScored }}</b></h3>
+                        <h3>Correct Answers: <b>{{ correctAnswer }}</b></h3>
+                        <h3>Attempted: <b>{{ attempted }}</b></h3>
+                    </mat-card-content>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-card-actions class="text-center mt-20 mb-20">
+                        <button
+                            class="mt-20"
+                            mat-raised-button
+                            color="primary"
+                        >
+                            Print
+                        </button>
+
+                        <button
+                            mat-raised-button
+                            color="accent"
+                            [routerLink]="'/user/0'"
+                        >
+                            Home
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
