@@ -14,11 +14,13 @@ export class StartQuizComponent implements OnInit {
 
   quizID : Number = 0;
 
+  quizTitle = "";
+
   questions: any = [];
 
   totalQuestions = 0;
 
-  marksScored = 0;
+  marksScored : any = 0;
 
   maxMarks = 0;
 
@@ -51,7 +53,8 @@ export class StartQuizComponent implements OnInit {
 
           this.totalQuestions = this.questions.length;
           this.attempted = this.questions.length;
-          this.maxMarks = this.questions[0]['quiz']['maxMarks'];
+          // this.maxMarks = this.questions[0]['quiz']['maxMarks'];
+          this.quizTitle = this.questions[0]['quiz']['title'];
 
           this.questions.forEach((question : any) => {
               question['givenAnswer'] = "";
@@ -79,7 +82,6 @@ export class StartQuizComponent implements OnInit {
   }
 
   startTimer = () => {
-    // calling function every second
     let timerFunction = window.setInterval(() => {
       if(this.timer <= 0) {
         this.isSubmit = true;
@@ -114,18 +116,36 @@ export class StartQuizComponent implements OnInit {
   }
 
   evaluateQuiz = () => {
-    this.questions.forEach((question : any) => {
-      if(question['givenAnswer'] == question['answer']) {
-        this.correctAnswer++;
+    this._questionService.pushEvalQuiz(this.questions)
+      .subscribe(
+        (data : any) => {
+          this.correctAnswer = data['correctAnswers'];
+                    
+          if(!isNaN(data['marksScored'])) {
+            this.marksScored = Number.parseInt(data['marksScored']).toFixed(2);
+          }
+          
+          this.attempted = data['attempted'];
+          this.maxMarks = data['maxMarks'];
+        },
+        (error) => {
+          console.error(error);
+          Swal.fire("Error !!", `${error.statusText}`, "error");
+        }
+      );
 
-        let oneQuestionMark = question['quiz']['maxMarks'] / question['quiz']['numberOfQuestions'];
+  //   this.questions.forEach((question : any) => {
+  //     if(question['givenAnswer'] == question['answer']) {
+  //       this.correctAnswer++;
 
-        this.marksScored += oneQuestionMark;
-      }
+  //       let oneQuestionMark = question['quiz']['maxMarks'] / question['quiz']['numberOfQuestions'];
 
-      if(question['givenAnswer'].trim() == '') {
-        this.attempted--;
-      }
-  });
+  //       this.marksScored += oneQuestionMark;
+  //     }
+
+  //     if(question['givenAnswer'].trim() == '') {
+  //       this.attempted--;
+  //     }
+  // });
   }
 }
