@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+// Loader Module
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
+
 // Material UI Modules
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input'
@@ -88,6 +91,10 @@ import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component
     MatSlideToggleModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

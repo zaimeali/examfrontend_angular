@@ -1,3 +1,11 @@
-<app-navbar></app-navbar>
+<ngx-ui-loader
+    fgsColor="#ff4081"
+    pbColor="#ff4081"
+></ngx-ui-loader>
 
-<router-outlet></router-outlet>
+
+<div ngxUiLoaderBlurred (blur)="10">
+    <app-navbar></app-navbar>
+    
+    <router-outlet></router-outlet>
+</div>
